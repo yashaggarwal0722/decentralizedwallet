@@ -44,6 +44,7 @@ const Login = () => {
     return (
         <div className='min-w-full h-4/5 flex justify-center flex-col items-center'>
             <img className='h-24' src='wallet.png' alt='' />
+                <h1 className='text-white text-2xl font-medium text-center'>Decentralised Wallet</h1>
             <div className='w-1/3 h-40 mt-4 bg-black bg-opacity-70 rounded-full shadow-lg flex flex-col justify-center items-center '>
                 <h1 className='text-white text-2xl font-medium text-center'>Login</h1>
                 {typeof window.ethereum !== 'undefined' ?
