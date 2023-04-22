@@ -16,10 +16,10 @@ const Main = () => {
             Recipients
           </li>
           <li onClick={()=>setRoute('recentTx')} className={`list-none cursor-pointer py-2 w-1/5  ${route=='recentTx'? "bg-black" :"bg-purple-900"} text-center rounded-full hover:bg-black `}>
-            Recent-TX
+            Recent Transactions
           </li>
           <li onClick={()=>setRoute('globalTx')} className={`list-none cursor-pointer py-2 w-1/5  ${route=='globalTx'? "bg-black" :"bg-purple-900"} text-center rounded-full hover:bg-black `}>
-            Global-TX
+            Global Transactions
           </li>
         </div>
       <div className="bg-black pb-5 overflow-y-auto shadow-lg rounded-b-lg border-4 border-purple-900 border-t-0 w-1/2">
