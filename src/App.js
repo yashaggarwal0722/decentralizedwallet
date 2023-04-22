@@ -30,8 +30,12 @@ function App() {
   const [saveTxLoad, setSaveTxLoad] = useState(false);
 
 
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = provider.getSigner();
+  //error resolve
+  const [provider,setProvider] = useState(((window.ethereum != null) ? new ethers.providers.Web3Provider(window.ethereum) : ethers.providers.getDefaultProvider()))
+  const [signer, setSigner] = useState(provider);
+
+  // const provider = new ethers.providers.Web3Provider(window.ethereum);
+  // const signer = provider.getSigner();
 
   const ERCABI = [
     "function balanceOf(address) view returns (uint)",
@@ -181,7 +185,7 @@ function App() {
   },[chain])
 
   return (
-    <Appstate.Provider value={{ login, setLogin, address, setAddress, chain, setChain, symbol, setSymbol, balance, setBalance, currency, setCurrency, getBal,ercTokenAddress, setErcTokenAddress,recipientAddress, setRecipientAddress,amount, setAmount, walletContractAddress, setWalletContractAddress, explorer, setExplorer,error, setError,message, setMessage,tokenChanged, setTokenChanged,showErc, setShowErc,ercLoading,setErcLoading,selectToken,removeToken,transferAmount,txLoading,setTxLoading,  showRecentTx, setShowRecentTx,recentTx, setRecentTx,saveTxLoad, setSaveTxLoad, saveTx, walletContract }} >
+    <Appstate.Provider value={{ login, setLogin, address, setAddress, chain, setChain, symbol, setSymbol, balance, setBalance, currency, setCurrency, getBal,ercTokenAddress, setErcTokenAddress,recipientAddress, setRecipientAddress,amount, setAmount, walletContractAddress, setWalletContractAddress, explorer, setExplorer,error, setError,message, setMessage,tokenChanged, setTokenChanged,showErc, setShowErc,ercLoading,setErcLoading,selectToken,removeToken,transferAmount,txLoading,setTxLoading,  showRecentTx, setShowRecentTx,recentTx, setRecentTx,saveTxLoad, setSaveTxLoad, saveTx, walletContract,provider,setProvider,signer,setSigner }} >
       <div className="min-w-full h-screen">
         {login ? (
           <div className="min-w-full min-h-full">

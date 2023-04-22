@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { useState } from 'react'
 import { Appstate } from '../App'
+import { ethers } from 'ethers'
 
 const Login = () => {
     const AppState = useContext(Appstate);
@@ -25,7 +26,6 @@ const Login = () => {
                 AppState.setCurrency("Matic");
                 AppState.setSymbol("Matic");
                 AppState.setWalletContractAddress("0x34A90C0b649bBc66C4758C46AdA275bD237D50cC");
-                AppState.setExplorer("https://mumbai.polygonscan.com/");
                 AppState.setLogin(true);
 
             }
@@ -33,6 +33,10 @@ const Login = () => {
                 setError("Only Sepolia and Polygon testnet are supported!");
                 AppState.setLogin(false);
             }
+            
+            //error resolve
+            AppState.setProvider(new ethers.providers.Web3Provider(window.ethereum));
+            AppState.setSigner(AppState.provider.getSigner());
 
         }
         catch (error) {
@@ -44,7 +48,6 @@ const Login = () => {
     return (
         <div className='min-w-full h-4/5 flex justify-center flex-col items-center'>
             <img className='h-24' src='wallet.png' alt='' />
-                <h1 className='text-white text-2xl font-medium text-center'>Decentralised Wallet</h1>
             <div className='w-1/3 h-40 mt-4 bg-black bg-opacity-70 rounded-full shadow-lg flex flex-col justify-center items-center '>
                 <h1 className='text-white text-2xl font-medium text-center'>Login</h1>
                 {typeof window.ethereum !== 'undefined' ?
